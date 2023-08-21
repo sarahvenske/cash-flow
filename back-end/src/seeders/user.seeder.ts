@@ -1,9 +1,9 @@
-import { AppDataSource } from "../data-source";
-import { User } from "../entities";
-import { faker } from "@faker-js/faker";
+import { AppDataSource } from "../data-source"
+import { User } from "../entities"
+import { faker } from "@faker-js/faker"
 
 export const createUserSeeder = async (): Promise<User> => {
-  const userRepository = AppDataSource.getRepository(User);
+  const userRepository = AppDataSource.getRepository(User)
 
   const user = userRepository.create({
     name: faker.person.fullName(),
@@ -12,7 +12,7 @@ export const createUserSeeder = async (): Promise<User> => {
     accountNumber: faker.finance.accountNumber(10),
     createdAt: new Date(),
     isCompany: faker.datatype.boolean(),
-  });
+  })
 
-  return await userRepository.save(user);
-};
+  return await userRepository.save(user)
+}

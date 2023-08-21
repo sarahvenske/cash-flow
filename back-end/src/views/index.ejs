@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Top Categories</title>
+  </head>
+  <body>
+    <h1>Top Categories</h1>
+    <ul>
+      <% topCategories.forEach(category => { %>
+      <li><%= category.category_name %>: <%= category.total_spent %></li>
+      <% }); %>
+    </ul>
+  </body>
+</html>

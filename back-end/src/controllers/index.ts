@@ -1,3 +1,3 @@
-import { listTopCategoriesController } from "./categories.controllers";
+import { topSpentCategoriesController } from "./categories.controllers"
 
-export { listTopCategoriesController };
+export { topSpentCategoriesController }

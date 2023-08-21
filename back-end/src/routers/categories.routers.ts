@@ -1,8 +1,8 @@
-import { Router } from "express";
-import { listTopCategoriesController } from "../controllers";
+import { Router } from "express"
+import { topSpentCategoriesController } from "../controllers"
 
-const categoryRouters: Router = Router();
+const categoryRouters: Router = Router()
 
-categoryRouters.get("/top_categories", listTopCategoriesController);
+categoryRouters.get("/top_spent", topSpentCategoriesController)
 
-export { categoryRouters };
+export { categoryRouters }

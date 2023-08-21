@@ -1,3 +1,3 @@
-import { listTopCategoriesServices } from "./listTopCategories.services";
+import { topSpentCategoriesServices } from "./topSpentCategories.services"
 
-export { listTopCategoriesServices };
+export { topSpentCategoriesServices }

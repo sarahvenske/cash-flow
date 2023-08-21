@@ -6,6 +6,7 @@ import {
   lessUsedMethodService,
   totalSpentService,
   totalIncomeService,
+  totalInvestmentService,
 } from "../services"
 
 const rootController = async (req: Request, res: Response) => {
@@ -21,6 +22,8 @@ const rootController = async (req: Request, res: Response) => {
 
   const totalIncome = await totalIncomeService()
 
+  const totalInvestment = await totalInvestmentService()
+
   return res.render("index", {
     topSpentCategories,
     lowestSpentCategory,
@@ -28,6 +31,7 @@ const rootController = async (req: Request, res: Response) => {
     lessUsedMethod,
     totalSpent,
     totalIncome,
+    totalInvestment,
   })
   //   return res.status(200).json(lowestSpentCategory)
 }

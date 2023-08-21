@@ -1,7 +1,7 @@
 import { AppDataSource } from "../data-source"
 import { Category, Transaction } from "../entities"
 
-const topSpentCategoriesServices = async () => {
+const topSpentCategoriesService = async () => {
   const categoryRepository = AppDataSource.getRepository(Category)
 
   const incomeCategory: Category | null = await categoryRepository.findOne({
@@ -30,4 +30,4 @@ const topSpentCategoriesServices = async () => {
   return topSpentCategories
 }
 
-export { topSpentCategoriesServices }
+export { topSpentCategoriesService }

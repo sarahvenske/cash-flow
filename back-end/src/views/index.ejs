@@ -1,14 +1,32 @@
 <!doctype html>
 <html>
   <head>
-    <title>Top Categories</title>
+    <title>Financial Rewind</title>
   </head>
   <body>
-    <h1>Top Categories</h1>
-    <ul>
-      <% topSpentCategories.forEach(category => { %>
-      <li><%= category.category_name %>: <%= category.total_spent %></li>
-      <% }); %>
-    </ul>
+    <!-- INSIGHT 1: TOP 5 CATEGORIES SPENT -->
+    <section>
+      <h1>Top Categories</h1>
+      <ul>
+        <% topSpentCategories.forEach(category => { %>
+        <li><%= category.category_name %>: <%= category.total_spent %></li>
+        <% }); %>
+      </ul>
+    </section>
+    <!-- INSIGHT 2: LOWEST CATEGORY SPENT -->
+    <section>
+      <h1>Category with the Lowest Spending</h1>
+
+      <% if (lowestSpentCategory) { %>
+      <p>
+        <strong>Category Name:</strong> <%= lowestSpentCategory.category_name %>
+      </p>
+      <p>
+        <strong>Total Spent:</strong> $<%= lowestSpentCategory.total_spent %>
+      </p>
+      <% } else { %>
+      <p>No categories found.</p>
+      <% } %>
+    </section>
   </body>
 </html>

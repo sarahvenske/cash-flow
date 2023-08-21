@@ -4,8 +4,8 @@ import { Category, Transaction } from "../entities"
 const topSpentCategoriesService = async () => {
   const categoryRepository = AppDataSource.getRepository(Category)
 
-  const incomeCategory: Category | null = await categoryRepository.findOne({
-    where: { name: "Income" },
+  const excludedCategories = await categoryRepository.find({
+    where: [{ name: "Income" }, { name: "Investments" }],
   })
 
   const transactionRepository = AppDataSource.getRepository(Transaction)
@@ -19,9 +19,12 @@ const topSpentCategoriesService = async () => {
     .orderBy("total_spent", "DESC")
     .limit(5)
 
-  if (incomeCategory) {
-    queryBuilder.where("t.categoryId != :excludedCategoryId", {
-      excludedCategoryId: incomeCategory.id,
+  if (excludedCategories.length) {
+    const excludedCategoryIds = excludedCategories.map(
+      (category) => category.id
+    )
+    queryBuilder.where("t.categoryId NOT IN (:...excludedCategoryIds)", {
+      excludedCategoryIds: excludedCategoryIds,
     })
   }
 

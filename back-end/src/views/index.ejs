@@ -27,12 +27,22 @@
       <p>No categories found.</p>
       <% } %>
     </section>
-    <!-- INSIGHT 3L MOST USED METHOD -->
+    <!-- INSIGHT 3: MOST USED METHOD -->
     <section>
       <h1>Most Used Method</h1>
       <% if (mostUsedMethod) { %>
       <p><strong>Method Name:</strong> <%= mostUsedMethod.method_name %></p>
       <p><strong>Times Used:</strong> $<%= mostUsedMethod.method_count %></p>
+      <% } else { %>
+      <p>No methods found.</p>
+      <% } %>
+    </section>
+    <!-- INSIGHT 4: LESS USED METHOD -->
+    <section>
+      <h1>Less Used Method</h1>
+      <% if (lessUsedMethod) { %>
+      <p><strong>Method Name:</strong> <%= lessUsedMethod.method_name %></p>
+      <p><strong>Times Used:</strong> $<%= lessUsedMethod.method_count %></p>
       <% } else { %>
       <p>No methods found.</p>
       <% } %>

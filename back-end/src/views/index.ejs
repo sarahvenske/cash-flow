@@ -6,7 +6,7 @@
   <body>
     <!-- INSIGHT 1: TOP 5 CATEGORIES SPENT -->
     <section>
-      <h1>Top Categories</h1>
+      <h1>Top Spent Categories</h1>
       <ul>
         <% topSpentCategories.forEach(category => { %>
         <li><%= category.category_name %>: <%= category.total_spent %></li>
@@ -16,7 +16,6 @@
     <!-- INSIGHT 2: LOWEST CATEGORY SPENT -->
     <section>
       <h1>Category with the Lowest Spending</h1>
-
       <% if (lowestSpentCategory) { %>
       <p>
         <strong>Category Name:</strong> <%= lowestSpentCategory.category_name %>
@@ -26,6 +25,16 @@
       </p>
       <% } else { %>
       <p>No categories found.</p>
+      <% } %>
+    </section>
+    <!-- INSIGHT 3L MOST USED METHOD -->
+    <section>
+      <h1>Most Used Method</h1>
+      <% if (mostUsedMethod) { %>
+      <p><strong>Method Name:</strong> <%= mostUsedMethod.method_name %></p>
+      <p><strong>Times Used:</strong> $<%= mostUsedMethod.method_count %></p>
+      <% } else { %>
+      <p>No methods found.</p>
       <% } %>
     </section>
     <script src="/javascript/app.js"></script>

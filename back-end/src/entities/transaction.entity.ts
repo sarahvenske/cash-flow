@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  Index,
+} from "typeorm"
 import { Category, Method, User } from "./index"
 
 @Entity("transactions")
@@ -21,9 +27,11 @@ export class Transaction {
   @Column({ type: "time" })
   hour: string
 
+  @Index()
   @ManyToOne(() => Category)
   category: Category
 
+  @Index()
   @ManyToOne(() => Method)
   method: Method
 }

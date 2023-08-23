@@ -2,100 +2,102 @@
 <html>
   <head>
     <title>Financial Rewind</title>
+    <!-- CSS File -->
     <link rel="stylesheet" href="/css/output.css" />
+
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
   </head>
-  <body>
-      <section
-        class="slide h-screen w-screen bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-fuchsia-500 via-red-600 to-orange-400 flex justify-center hidden"
-      >
-        <div class="flex flex-col justify-center gap-y-5">
-          <h1
-            class="text-10xl md:text-6xl xl:text-7xl font-bold  text-gray-800 sm:text-4xl"
-          >
-            Hello John!
-          </h1>
-          <h2 class="text-6xl font-bold  text-gray-800 ">We have a surprise for you.</h2>
-          <p class="text-xl font-bold  text-gray-700 ">
-            Here's a rewind of your last year's transactions.
-          </p>
-          <p class="text-xl font-bold tracking-tight text-gray-700 ">Wanna see it?</p>
-            <button
-              class="bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >Get started</button
-            >
+  <body class="">
+    <!-- SECTION 1 -->
+    <section class="slide hidden w-screen h-screen p-10 flex justify-center items-center gradient-background">
+      <div class="flex flex-col items-start gap-y-4 max-w-2xl">
+        <h1 class="text-9xl font-bold text-white">Hello, John!</h1>
+        <h2 class="text-7xl font-bold text-white">We have a surprise for you.</h2>
+        <p class="text-5xl font-semibold mt-10 text-gray-900 ">Here's a rewind of your last year's transactions. Wanna see it?</p>
+        <button class="bg-pink-500 hover:bg-pink-600 text-white font-bold text-xl py-2 px-4 rounded mt-16">Let's go!</button>
+      </div>
+    </section>
+  <!-- SECTION 2 -->
+  <section class="slide hidden w-screen h-screen p-10 flex justify-center items-center gradient-slides">
+    <div class="flex flex-col items-center gap-y-20">
+      <h1 class="text-9xl text-center font-bold text-gray-800">In the last year...</h1>
+      <div class="flex flex-wrap items-center justify-center grid-cols-3 gap-10">
+        <div class="flex flex-col p-10 border-solid border-2 rounded-xl bg-blue-600 border-blue-600">
+          <p class="text-3xl font-medium text-center text-gray-50">You did</p>
+          <p class="text-5xl font-medium text-center text-gray-50"><%= totalTransactions.total_transactions%></p>
+          <p class="text-3xl font-medium text-center text-gray-50">transactions</p>
         </div>
-      </section>
-      <!-- INSIGHT 1: TOP 5 CATEGORIES SPENT -->
-      <section class="slide h-screen w-screen hidden">
-        <h1 class="text-3xl" >Top Spent Categories</h1>
-        <canvas id="chart-top-categories" data-chart-data="<%=JSON.stringify(topSpentCategories)%>" class="flex"></canvas>
-      </section>
-      <!-- INSIGHT 2: LOWEST CATEGORY SPENT -->
-      <section class="slide hidden">
-        <h1>Category with the Lowest Spending</h1>
-        <% if (lowestSpentCategory) { %>
-        <p>
-          <strong>Category Name:</strong> <%= lowestSpentCategory.category_name
-          %>
-        </p>
-        <p>
-          <strong>Total Spent:</strong> $<%= lowestSpentCategory.total_spent %>
-        </p>
-        <% } else { %>
-        <p>No categories found.</p>
-        <% } %>
-      </section class="slide hidden">
-      <!-- INSIGHT 3: MOST USED METHOD -->
-      <section class="slide hidden">
-        <h1>Most Used Method</h1>
-        <% if (mostUsedMethod) { %>
-        <p><strong>Method Name:</strong> <%= mostUsedMethod.method_name %></p>
-        <p><strong>Times Used:</strong> $<%= mostUsedMethod.method_count %></p>
-        <% } else { %>
-        <p>No methods found.</p>
-        <% } %>
-      </section>
-      <!-- INSIGHT 4: LESS USED METHOD -->
-      <section class="slide hidden">
-        <h1>Less Used Method</h1>
-        <% if (lessUsedMethod) { %>
-        <p><strong>Method Name:</strong> <%= lessUsedMethod.method_name %></p>
-        <p><strong>Times Used:</strong> $<%= lessUsedMethod.method_count %></p>
-        <% } else { %>
-        <p>No methods found.</p>
-        <% } %>
-      </section>
-      <!-- INSIGHT 5: TOTAL SPENT -->
-      <section class="slide hidden">
-        <h1>Total Spent (excluding Income): <%= totalSpent %></h1>
-      </section>
-      <!-- INSIGHT 6: TOTAL INCOME -->
-      <section class="slide hidden">
-        <h1>Total Income: <%= totalIncome %></h1>
-      </section>
-      <!-- INSIGHT 7: TOTAL INVESTMENT -->
-      <section class="slide hidden">
-        <h1>Total Investment: <%= totalInvestment %></h1>
-      </section>
-      <!-- INSIGHT 8: INCOME SOURCE -->
-      <section class="slide hidden">
-        <h1>Biggest Income Source <%= biggestIncomeSource.name %></h1>
-        <h1>Biggest Income Value <%= biggestIncomeSource.income_value %></h1>
-      </section>
-      <!-- INSIGHT 9: TOTAL TRANSACTIONS -->
-      <section class="slide hidden">
-        <h1>Total transactions <%= totalTransactions.total_transactions %></h1>
-      </section>
+        <div class="flex flex-col p-10 border-solid border-2 rounded-xl bg-purple-600 border-purple-600">
+          <p class="text-3xl font-medium text-center text-gray-50">Your total <br> income was</p>
+          <p class="text-5xl font-medium text-center text-gray-50">$ <%= totalIncome %></p>
+        </div>
+        <div class="flex flex-col p-10 border-solid border-2 rounded-xl bg-pink-600 border-pink-500">
+          <p class="text-3xl font-medium text-center text-gray-50">Your total <br> spent was</p>
+          <p class="text-5xl font-medium text-center text-gray-50">$ <%= totalSpent %></p>
+        </div>
+      </div>
+      <div class="flex flex-row gap-x-5">
+        <button class="w-40 bg-gray-500 hover:bg-gray-600 text-white font-semibold text-xl py-2 px-4 rounded mt-16">Next</button>
+        <button class="w-40 bg-gray-500 hover:bg-gray-600 text-white font-semibold text-xl py-2 px-4 rounded mt-16">Previous</button>
+      </div>
     </div>
-    <div>
-      <button class="btnPrevious">Anterior</button>
-      <button class="btnNext">Próximo</button>
-    <div>
-    <script src="/javascript/app.js"></script>
+  </section>
+  <!-- SECTION 3 -->
+  <section class="slide hidden w-screen h-screen px-5 flex justify-center flex-col items-center gradient-slides">
+    <div class="flex flex-col items-center gap-y-20">
+      <h1 class="text-8xl font-bold text-gray-800">The top 5 categories <br> you spent most were</h1>
+      <div class="w-3/6 h-3/6">
+        <canvas id="chart-top-categories" data-chart-data="<%=JSON.stringify(topSpentCategories)%>" class="flex"></canvas>
+      </div>
+      <div class="flex flex-row gap-x-5">
+        <button class="w-40 bg-gray-500 hover:bg-gray-600 text-white font-semibold text-xl py-2 px-4 rounded mt-16">Next</button>
+        <button class="w-40 bg-gray-500 hover:bg-gray-600 text-white font-semibold text-xl py-2 px-4 rounded mt-16">Previous</button>
+      </div>
+    </div>
+  </section>
+  <!-- SECTION 4 -->
+  <section class="slide hidden w-screen h-screen px-5 flex justify-center flex-col items-center gradient-slides">
+    <div class="flex flex-col items-center justify-center gap-y-10">
+      <h1 class="text-8xl font-bold text-gray-800 mb-10">Here some interesting facts...</h1>
+      <div class="flex flex-wrap justify-center items-center grid-cols-3 gap-12">
+        <div class="flex flex-col p-10 border-solid border-2 rounded-xl bg-blue-600 border-blue-600">
+          <p class="text-5xl font-medium text-center text-gray-50"><%= lowestSpentCategory.category_name %></p>
+          <p class="text-3xl font-medium text-center text-gray-50">was the category <br> you spent less</p>
+        </div>
+        <div class="flex flex-col p-10 border-solid border-2 rounded-xl bg-purple-600 border-purple-600">
+          <p class="text-5xl font-medium text-center text-gray-50"><%= mostUsedMethod.method_name %></p> 
+          <p class="text-3xl font-medium text-center text-gray-50"> was your most <br> used method </p>
+          <p class="text-3xl font-medium text-center text-gray-50">(<%= mostUsedMethod.method_count %> times)</p>
+        </div>
+        <div class="flex flex-col p-10 border-solid border-2 rounded-xl bg-pink-500 border-pink-500">
+          <p class="text-5xl font-medium text-center text-gray-50"><%= lessUsedMethod.method_name %></p>
+          <p class="text-3xl font-medium text-center text-gray-50"> was your less <br> used method </p>
+          <p class="text-3xl font-medium text-center text-gray-50">(<%= lessUsedMethod.method_count %> times)</p>
+        </div>
+        <div class="flex flex-col p-10 border-solid border-2 rounded-xl bg-orange-600 border-orange-600">
+          <p class="text-3xl font-medium text-center text-gray-50"> You have invested <br> a total amount of</p>
+          <p class="text-5xl font-medium text-center text-gray-50">$ <%= totalInvestment %></p>
+        </div>
+        <div class="flex flex-col p-10 border-solid border-2 rounded-xl bg-red-600 border-red-600">
+          <p class="text-3xl font-medium text-center text-gray-50"> Your biggest <br> source of <br> income was</p>
+          <p class="text-5xl font-medium text-center text-gray-50">"<%= biggestIncomeSource.name%>"</p>
+        </div>
+      </div>
+      <div class="flex flex-row gap-x-5">
+        <button class="w-40 bg-gray-500 hover:bg-gray-600 text-white font-semibold text-xl py-2 px-4 rounded mt-16">Next</button>
+        <button class="w-40 bg-gray-500 hover:bg-gray-600 text-white font-semibold text-xl py-2 px-4 rounded mt-16">Previous</button>
+      </div>
+  </section>
+  <div>
+    <button class="btnPrevious">Anterior</button>
+    <button class="btnNext">Próximo</button>
+  <div>
+    <script src="/javascript/main.js"></script>
   </body>
 </html>

@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./src/**/*.{html,ejs}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: ["Inter", "inter"],
+      },
+    },
   },
   plugins: [],
 }

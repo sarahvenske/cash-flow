@@ -10,6 +10,8 @@ import { totalInvestmentService } from "./totalInvestment.services"
 
 import { biggestIncomeSourceService } from "./biggestIncomeSource.services"
 
+import { totalTransactionsService } from "./totalTransactions.services"
+
 export {
   topSpentCategoriesService,
   lowestSpentCategoryService,
@@ -19,4 +21,5 @@ export {
   totalIncomeService,
   totalInvestmentService,
   biggestIncomeSourceService,
+  totalTransactionsService,
 }

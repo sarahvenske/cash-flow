@@ -9,6 +9,7 @@ import {
   totalInvestmentService,
   biggestIncomeSourceService,
   totalTransactionsService,
+  firstUserNameService,
 } from "../services"
 
 const rootController = async (req: Request, res: Response) => {
@@ -30,6 +31,8 @@ const rootController = async (req: Request, res: Response) => {
 
   const totalTransactions = await totalTransactionsService()
 
+  const firstUserName = await firstUserNameService()
+
   return res.render("index", {
     topSpentCategories,
     lowestSpentCategory,
@@ -40,6 +43,7 @@ const rootController = async (req: Request, res: Response) => {
     totalInvestment,
     biggestIncomeSource,
     totalTransactions,
+    firstUserName,
   })
 }
 

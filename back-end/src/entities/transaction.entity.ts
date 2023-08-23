@@ -21,6 +21,7 @@ export class Transaction {
   @Column("decimal", { precision: 10, scale: 2 })
   value: number
 
+  @Index()
   @Column({ type: "date" })
   date: Date | string
 

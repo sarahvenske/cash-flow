@@ -9,6 +9,7 @@ const totalInvestmentService = async () => {
     .select("SUM(t.value)", "total_investment")
     .innerJoin(Category, "c", "t.categoryId = c.id")
     .where("c.name = :includedCategory", { includedCategory: "Investments" })
+    .andWhere("EXTRACT(YEAR FROM t.date) = :year", { year: 2022 })
     .getRawOne()
 
   return totalInvestment ? parseFloat(totalInvestment.total_investment) : 0

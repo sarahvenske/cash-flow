@@ -6,7 +6,7 @@ const totalIncomeService = async () => {
 
   const totalIncome = await transactionRepository
     .createQueryBuilder("t")
-    .select("SUM(t.value)", "total_income")
+    .select("ROUND(SUM(t.value)::numeric, 0)", "total_income")
     .innerJoin(Category, "c", "t.categoryId = c.id")
     .where("c.name = :includedCategory", { includedCategory: "Income" })
     .andWhere("EXTRACT(YEAR FROM t.date) = :year", { year: 2022 })

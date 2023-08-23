@@ -13,7 +13,7 @@ const topSpentCategoriesService = async () => {
   const queryBuilder = transactionRepository
     .createQueryBuilder("t")
     .select("c.name", "category_name")
-    .addSelect("SUM(t.value)", "total_spent")
+    .addSelect("ROUND(SUM(t.value)::numeric, 0)", "total_spent")
     .innerJoin(Category, "c", "t.categoryId = c.id")
     .where("EXTRACT(YEAR FROM t.date) = :year", { year: 2022 })
     .groupBy("c.name")

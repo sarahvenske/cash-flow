@@ -46,7 +46,7 @@ function chartTopSpentCategories() {
     labels: chartData.map((category) => category.category_name),
     datasets: [
       {
-        label: "My First Dataset",
+        label: "Top Spent Categories",
         data: chartData.map((category) => category.total_spent),
         backgroundColor: [
           "#D62432",
@@ -59,6 +59,7 @@ function chartTopSpentCategories() {
       },
     ],
   }
+
   new Chart(ctx, { type: "doughnut", data: data })
 }
 chartTopSpentCategories()

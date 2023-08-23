@@ -9,6 +9,7 @@ const mostUsedMethodService = async () => {
     .select("m.name", "method_name")
     .addSelect("COUNT(t.methodId)", "method_count")
     .innerJoin(Method, "m", "t.methodId = m.id")
+    .where("EXTRACT(YEAR FROM t.date) = :year", { year: 2022 })
     .groupBy("m.name")
     .orderBy("method_count", "DESC")
     .limit(1)

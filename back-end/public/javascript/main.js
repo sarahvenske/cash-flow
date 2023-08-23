@@ -1,6 +1,6 @@
+// Slides Activation
+
 const sections = document.querySelectorAll(".slide")
-const next = document.querySelector(".btnNext")
-const previous = document.querySelector(".btnPrevious")
 
 let currentSectionIndex = 0
 
@@ -11,7 +11,6 @@ function activateSlide(number) {
 activateSlide(currentSectionIndex)
 
 function nextSlide(e) {
-  console.log("click")
   currentSectionIndex++
   if (currentSectionIndex == sections.length) {
     currentSectionIndex = 0
@@ -29,10 +28,15 @@ function previousSlide(e) {
   activateSlide(currentSectionIndex)
 }
 
-next.addEventListener("click", nextSlide)
-previous.addEventListener("click", previousSlide)
+// Previous and Next Buttons
 
-// Charts
+const nextButtons = document.querySelectorAll(".btnNext")
+nextButtons.forEach((b) => b.addEventListener("click", nextSlide))
+
+const previousButtons = document.querySelectorAll(".btnPrevious")
+previousButtons.forEach((b) => b.addEventListener("click", previousSlide))
+
+// Top 5 Categories Spent Chart
 
 function chartTopSpentCategories() {
   const ctx = document.getElementById("chart-top-categories")

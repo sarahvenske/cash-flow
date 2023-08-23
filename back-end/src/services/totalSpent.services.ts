@@ -14,12 +14,13 @@ const totalSpentService = async () => {
     .createQueryBuilder("t")
     .select("SUM(t.value)", "total_spent")
     .innerJoin(Category, "c", "t.categoryId = c.id")
+    .where("EXTRACT(YEAR FROM t.date) = :year", { year: 2022 })
 
   if (excludedCategories.length) {
     const excludedCategoryIds = excludedCategories.map(
       (category) => category.id
     )
-    queryBuilder.where("t.categoryId NOT IN (:...excludedCategoryIds)", {
+    queryBuilder.andWhere("t.categoryId NOT IN (:...excludedCategoryIds)", {
       excludedCategoryIds: excludedCategoryIds,
     })
   }

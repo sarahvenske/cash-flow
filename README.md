@@ -1,4 +1,4 @@
-# 💰 Cash-Flow: yearly bank account activity as a rewind
+# 💰 Cash-Flow: yearly bank account actity as a rewind
 
 ## About
 

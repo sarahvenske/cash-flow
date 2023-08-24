@@ -9,30 +9,32 @@ import {
   totalInvestmentService,
   biggestIncomeSourceService,
   totalTransactionsService,
-  firstUserNameService,
+  transactionsUserService,
   aiInsightsServices,
 } from "../services"
 
 const rootController = async (req: Request, res: Response) => {
-  const topSpentCategories = await topSpentCategoriesService()
+  const userId: string = req.params.user_id
 
-  const lowestSpentCategory = await lowestSpentCategoryService()
+  const user = await transactionsUserService(userId)
 
-  const mostUsedMethod = await mostUsedMethodService()
+  const topSpentCategories = await topSpentCategoriesService(user)
 
-  const lessUsedMethod = await lessUsedMethodService()
+  const lowestSpentCategory = await lowestSpentCategoryService(user)
 
-  const totalSpent = await totalSpentService()
+  const mostUsedMethod = await mostUsedMethodService(user)
 
-  const totalIncome = await totalIncomeService()
+  const lessUsedMethod = await lessUsedMethodService(user)
 
-  const totalInvestment = await totalInvestmentService()
+  const totalSpent = await totalSpentService(user)
 
-  const biggestIncomeSource = await biggestIncomeSourceService()
+  const totalIncome = await totalIncomeService(user)
 
-  const totalTransactions = await totalTransactionsService()
+  const totalInvestment = await totalInvestmentService(user)
 
-  const firstUserName = await firstUserNameService()
+  const biggestIncomeSource = await biggestIncomeSourceService(user)
+
+  const totalTransactions = await totalTransactionsService(user)
 
   const aiInsights = await aiInsightsServices()
 
@@ -46,8 +48,8 @@ const rootController = async (req: Request, res: Response) => {
     totalInvestment,
     biggestIncomeSource,
     totalTransactions,
-    firstUserName,
     aiInsights,
+    user,
   })
 }
 

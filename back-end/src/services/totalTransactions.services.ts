@@ -1,13 +1,14 @@
 import { AppDataSource } from "../data-source"
-import { Transaction } from "../entities"
+import { Transaction, User } from "../entities"
 
-const totalTransactionsService = async () => {
+const totalTransactionsService = async (user: User) => {
   const transactionRepository = AppDataSource.getRepository(Transaction)
 
   const totalTransactions = await transactionRepository
     .createQueryBuilder("t")
     .select("count(t.id)", "total_transactions")
-    .where('EXTRACT(YEAR FROM t."date") = :year', { year: 2022 })
+    .where("t.userOriginId = :userId", { userId: user.id })
+    .andWhere('EXTRACT(YEAR FROM t."date") = :year', { year: 2022 })
     .getRawOne()
 
   return totalTransactions

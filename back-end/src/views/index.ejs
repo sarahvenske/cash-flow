@@ -23,7 +23,7 @@
     >
       <div class="flex flex-col items-start gap-y-4 max-w-2xl">
         <h1 class="text-9xl font-bold text-white">
-          Hello, <%= firstUserName %>!
+          Hello, <%= user.name.split(' ')[0] %>!
         </h1>
         <h2 class="text-7xl font-bold text-white">
           We have a surprise for you.
@@ -237,7 +237,12 @@
             </li>
             <% }); %>
           </ul>
-          <a href="/" class=""
+          <button
+            class="btnPrevious w-40 bg-gray-500 hover:bg-gray-600 text-white font-semibold text-xl py-2 px-4 rounded mt-16"
+          >
+            Previous
+          </button>
+          <a href="https://google.com" class=""
             ><button
               class="bg-pink-500 hover:bg-pink-600 text-white font-bold text-xl py-2 px-4 rounded mt-16"
             >

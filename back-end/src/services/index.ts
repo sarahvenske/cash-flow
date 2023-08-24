@@ -12,7 +12,7 @@ import { biggestIncomeSourceService } from "./biggestIncomeSource.services"
 
 import { totalTransactionsService } from "./totalTransactions.services"
 
-import { firstUserNameService } from "./firstUserName.service"
+import { transactionsUserService } from "./transactionsUser.service"
 
 import { aiInsightsServices } from "./aiInsights.services"
 
@@ -26,6 +26,6 @@ export {
   totalInvestmentService,
   biggestIncomeSourceService,
   totalTransactionsService,
-  firstUserNameService,
+  transactionsUserService,
   aiInsightsServices,
 }

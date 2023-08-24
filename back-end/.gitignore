@@ -2,3 +2,5 @@ node_modules/
 *lock*
 .env
 .vscode
+/public/css/output.css
+dist

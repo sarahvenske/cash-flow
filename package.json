@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": "18.13.0"
+  },
   "scripts": {
     "dev": "ts-node-dev --cls --rs --ignore-watch node_modules src/server.ts",
     "build-dev": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch",

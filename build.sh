@@ -1,4 +1,3 @@
-// build.sh
 #!/usr/bin/env bash
 # exit on error
 set -o errexit
@@ -6,4 +5,5 @@ set -o errexit
 yarn
 yarn build
 yarn build-css
-yarn typeorm migration:run -d dist/data-source
+yarn typeorm migration:run -d src/data-source.ts
+cp -R src/views dist/

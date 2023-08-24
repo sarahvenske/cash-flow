@@ -4,11 +4,8 @@ import { DataSource, DataSourceOptions } from "typeorm"
 import path from "path"
 
 const dataSourceConfig = (): DataSourceOptions => {
-  const entitiesPath: string = path.join(__dirname, "./entities/**.{ts, js}")
-  const migrationsPath: string = path.join(
-    __dirname,
-    "./migrations/**.{ts, js}"
-  )
+  const entitiesPath: string = path.join(__dirname, "./entities/**.{ts,js}")
+  const migrationsPath: string = path.join(__dirname, "./migrations/**.{ts,js}")
 
   const dbUrl: string | undefined = process.env.DATABASE_URL
 

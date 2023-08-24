@@ -1,7 +1,7 @@
 import { AppDataSource } from "../data-source"
-import { Category, Transaction } from "../entities"
+import { Category, Transaction, User } from "../entities"
 
-const totalSpentService = async () => {
+const totalSpentService = async (user: User) => {
   const categoryRepository = AppDataSource.getRepository(Category)
 
   const excludedCategories = await categoryRepository.find({
@@ -14,12 +14,14 @@ const totalSpentService = async () => {
     .createQueryBuilder("t")
     .select("ROUND(SUM(t.value)::numeric, 0)", "total_spent")
     .innerJoin(Category, "c", "t.categoryId = c.id")
+    .where("t.userOriginId = :userId", { userId: user.id })
+    .andWhere("EXTRACT(YEAR FROM t.date) = :year", { year: 2022 })
 
   if (excludedCategories.length) {
     const excludedCategoryIds = excludedCategories.map(
       (category) => category.id
     )
-    queryBuilder.where("t.categoryId NOT IN (:...excludedCategoryIds)", {
+    queryBuilder.andWhere("t.categoryId NOT IN (:...excludedCategoryIds)", {
       excludedCategoryIds: excludedCategoryIds,
     })
   }

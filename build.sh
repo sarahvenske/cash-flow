@@ -6,3 +6,4 @@ yarn
 yarn build
 yarn build-css
 yarn typeorm migration:run -d src/data-source.ts
+cp -R src/views dist/

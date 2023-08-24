@@ -14,6 +14,8 @@ import { totalTransactionsService } from "./totalTransactions.services"
 
 import { firstUserNameService } from "./firstUserName.service"
 
+import { aiInsightsServices } from "./aiInsights.services"
+
 export {
   topSpentCategoriesService,
   lowestSpentCategoryService,
@@ -25,4 +27,5 @@ export {
   biggestIncomeSourceService,
   totalTransactionsService,
   firstUserNameService,
+  aiInsightsServices,
 }

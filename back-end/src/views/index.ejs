@@ -216,19 +216,34 @@
       </div>
     </section>
     <!-- SECTION 5 -->
-    <section class="slide hidden">
-      <div>
-        <h1 class="text-8xl text-center font-bold text-gray-800 mb-10">
-          Based on your investments,
+    <section
+      class="slide hidden w-screen h-screen px-5 flex justify-center flex-col items-center gradient-slides"
+    >
+      <div class="flex flex-col justify-center gap-y-4 mx-12">
+        <h1 class="w-2/3 text-7xl text-start font-bold text-purple-600 mb-1">
+          Based on your investments, <br />
+          our AI tool
         </h1>
-        <p>our AI tool made some suggestions especially for you!</p>
+        <p class="w-2/3 text-6xl font-bold text-gray-600 mb-10">
+          made some suggestions especially for you!
+        </p>
         <div>
           <ul>
-            <li>Stocks Market</li>
-            <li>Bonds</li>
-            <li>Investment Funds</li>
-            <li>Other bank products</li>
+            <% aiInsights.forEach(function(insight) { %>
+            <li
+              class="ml-5 text-5xl text-start font-bold text-gray-700 mb-10 list-disc"
+            >
+              <%= insight %>
+            </li>
+            <% }); %>
           </ul>
+          <a href="/" class=""
+            ><button
+              class="bg-pink-500 hover:bg-pink-600 text-white font-bold text-xl py-2 px-4 rounded mt-16"
+            >
+              Check our investments page for more information!
+            </button></a
+          >
         </div>
       </div>
     </section>
